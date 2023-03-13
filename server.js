@@ -47,7 +47,7 @@ const UserSchema = new mongoose.Schema(
 
 const model = mongoose.model("users", UserSchema);
 
-mongoose.connect('mongodb+srv://pablo:pablo@cluster0.glswgtz.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://database2119:database2119@cluster0.glswgtz.mongodb.net/?retryWrites=true&w=majority', {
   serverSelectionTimeoutMS: 5000,
 }).then(()=>{
   console.log('Base de datos en MongoDB conectada');
@@ -82,7 +82,7 @@ app.use(
   session({
     store: MongoStore.create({
       mongoUrl:
-      'mongodb+srv://pablo:pablo@cluster0.glswgtz.mongodb.net/?retryWrites=true&w=majority',
+      'mongodb+srv://database2119:database2119@cluster0.glswgtz.mongodb.net/?retryWrites=true&w=majority',
     }),
     secret: "secret-key",
     resave: false,

@@ -62,12 +62,7 @@ const port = 3000;
 app.listen(port, () => {
     console.log(`Servidor ejecutandose en puerto ${port}`);
 });
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Sec
+
 
 
 const params = {

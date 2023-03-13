@@ -31,7 +31,7 @@ class ApiProdsSQL {
               {
                 title: "Series",
                 price: 200,
-                thumbnail: "https://i.pinimg.com/564x/81/c2/d5/81c2d592f541fed2d1b0f68b2d969057.jpg",
+                thumbnail: "https://ar.pinterest.com/pin/2462974787835737/",
                 id: 1,
               },
             ];
@@ -61,7 +61,7 @@ class ApiProdsSQL {
         title: faker.commerce.product(),
         price: faker.commerce.price(),
         //utilizo imagen de prueba ya que el antivirus me informa que los url de imagenes de faker poseen URL:Phishing
-        thumbnail: "https://dummyimage.com/300"
+        thumbnail: "https://ar.pinterest.com/pin/2462974787835737/"
       }
     } 
     const products = []

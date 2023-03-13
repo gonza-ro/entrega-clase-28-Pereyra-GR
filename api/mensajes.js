@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const URLMongoDB = 'mongodb+srv://pablo:pablo@cluster0.glswgtz.mongodb.net/?retryWrites=true&w=majority';
+const URLMongoDB = 'mongodb+srv://database2119:database2119@cluster0.glswgtz.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose.set("strictQuery", false);
 

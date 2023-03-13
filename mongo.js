@@ -1,12 +1,12 @@
 import mongoose from 'mongoose'
 
 const params = {
-    uri: 'mongodb://pablo:pablo@cluster0.glswgtz.mongodb.net/?retryWrites=true&w=majority',
+    uri: 'mongodb://database2119:database2119@cluster0.glswgtz.mongodb.net/?retryWrites=true&w=majority',
     options: {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        user: 'pablo',
-        pass: 'pablo',
+        user: 'database2119',
+        pass: 'database2119',
     },
 };
 
