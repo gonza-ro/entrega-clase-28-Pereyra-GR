@@ -3,7 +3,7 @@ import ApiProdsSQL from "./api/productos.js";
 import ApiMsjMongoDB from "./api/mensajes.js";
 import handlebars from "express-handlebars";
 import { Server } from "socket.io";
-import { createServer } from "http";
+import { createServer, request } from "http";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import MongoStore from "connect-mongo";
@@ -11,8 +11,20 @@ import bcrypt from "bcrypt"
 import mongoose from "mongoose";
 import passport from "passport";
 import {Strategy as LocalStrategy} from 'passport-local'
-import pkg from 'dotenv';
-const { env } = pkg;
+import pkg from "dotenv"
+import { fork } from "child_process";
+
+
+
+/// dotenv////
+const {env} = pkg.config()
+
+const name = process.env.NAME
+const email = process.env.EMAIL
+const password = process.env.PASSWORD
+
+
+
 
 //--CONFIGURACION Y CONEXION A MONDODB USUARIOS
 mongoose.set("strictQuery", false);
@@ -70,7 +82,7 @@ app.use(
   session({
     store: MongoStore.create({
       mongoUrl:
-        "mongodb+srv://coderhouse:coderhouse@coderhouse-backend.iwu4lzw.mongodb.net/ecommerce?retryWrites=true&w=majority",
+      'mongodb+srv://pablo:pablo@cluster0.glswgtz.mongodb.net/?retryWrites=true&w=majority',
     }),
     secret: "secret-key",
     resave: false,
@@ -175,6 +187,10 @@ app.get("/register", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
+  
+  if(req.body.name == process.env.NAME){
+    return("el usuario ya existe")  
+  }
 
   const {name, email, password} = req.body
 
@@ -302,10 +318,25 @@ app.post("/logout", (req, res) => {
   });
 });
 
+app.get("/info", (req, res) => {
+  res.render("info");
+});
+
+app.get('/api/randoms', (req, res) => {
+  const cant = req.query.cant ? parseInt(req.query.cant) : 100000000;
+
+  const child = fork('./randoms/apiRandoms.js');
+  child.send(cant);
+
+  child.on('message', (msg) => {
+    res.send(msg);
+  });
+});
+
 //SERVIDOR
 // ----------------------------------------------|
 
-// const PORT = 8080;
+const PORT = 8080;
 
 const srv = server.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${srv.address().port}`);
